@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Questions</title>
+</head>
+<body>
+    <h1>Questions</h1>
+    <ul>
+        {% for question in questions %}
+            <li>{{ question.question_text }}</li>
+        {% empty %}
+            <li>No questions available.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
