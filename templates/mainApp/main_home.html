@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<!-- 추가 css -->
+{% block extra_css %}
+
+{% endblock %}
+
+<!-- 내용 -->
+{% block content %}
+    <header class="header">
+        <div class="header-content">
+            <h1>환영합니다. 이번 목적지는</h1>
+            <h1>"여기추천"</h1>
+            <p>나에게 맞는 여행지를 찾아보세요.</p>
+            <p>
+                <a href="{% url 'questions:question_detail' question_id=1 %}">여행 추천 받기</a>
+            </p>
+
+        </div>
+    </header>
+    <div class="content" id="content">
+        <h2>Popular Destinations</h2>
+        <div class="cards">
+            <a href="{% url 'mainApp:destinations'%}">
+            <div class="card">
+                <img src="{% static 'mainApp/images/destination1.jpg' %}" alt="Destination 1">
+                <h3>Destination 1</h3>
+                <p>Explore the beauty of Destination 1 with its stunning landscapes and rich culture.</p>
+            </div>
+                </a>
+            <div class="card">
+                <img src="https://via.placeholder.com/300x200" alt="Destination 2">
+                <h3>Destination 2</h3>
+                <p>Experience the vibrant city life and historical landmarks of Destination 2.</p>
+            </div>
+            <div class="card">
+                <img src="https://via.placeholder.com/300x200" alt="Destination 3">
+                <h3>Destination 3</h3>
+                <p>Relax on the pristine beaches and enjoy the tropical climate of Destination 3.</p>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+<!-- 스크립트 -->
+{% block script %}
+{% endblock %}

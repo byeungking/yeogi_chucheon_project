@@ -1,27 +1,27 @@
 {% extends "base.html" %}
-
-{% block title %}챗봇{% endblock %}
 {% load static %}
+
 {% block extra_css %}
-<link href="{% static 'mainApp/chat.css' %}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'mainApp/css/chat.css' %}">
 {% endblock %}
 
 {% block content %}
 <div class="container">
     <h1>Chatbot</h1>
+    <div id="chat-log" class="chat-log"></div>
     <div class="chat-window">
 
         <div class="chat-input">
             <input type="text" id="question" class="form-control" placeholder="질문을 입력해주세요">
             <button onclick="getChatbotResponse()" class="btn btn-primary">Send</button>
-            <div id="chat-log" class="chat-log"></div>
         </div>
     </div>
+
 </div>
 {% endblock %}
 
-{% block extra_js %}
-<script>
+{% block script %}
+<script type='text/javascript'>
     async function getChatbotResponse() {
         const question = document.getElementById('question').value;
         const response = await fetch('', {

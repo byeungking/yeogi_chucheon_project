@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <h1>결과</h1>
+    <ul>
+        {% for question, choice in selected_choices %}
+            <li>{{ question.question_text }}: {{ choice.choice_text }}</li>
+        {% endfor %}
+    </ul>
+    <p><a href="{% url 'questions:question_detail' question_id=1 %}">Take the quiz again</a></p>
+{% endblock %}
