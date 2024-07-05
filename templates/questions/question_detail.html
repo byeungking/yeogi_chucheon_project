@@ -2,27 +2,29 @@
 {% load static %}
 
 {% block content %}
-    <h1>{{ question.question_text }}</h1>
-    <form action="{% url 'questions:vote' question.id %}" method="post">
+<div class="container">
+    <h1 class="mt-5">{{ question.question_text }}</h1>
+    <form action="{% url 'questions:vote' question.id %}" method="post" class="mt-4">
         {% csrf_token %}
-        <ul>
+        <ul class="list-group">
             {% for choice in question.choice_set.all %}
-                <li>
-                    <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
-                    <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label>
+                <li class="list-group-item">
+                    <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}" class="form-check-input">
+                    <label for="choice{{ forloop.counter }}" class="form-check-label">{{ choice.choice_text }}</label>
                 </li>
             {% empty %}
-                <li>No choices available for this question.</li>
+                <li class="list-group-item">이 질문에 대한 선택사항이 없습니다.</li>
             {% endfor %}
         </ul>
-        <button type="submit">Vote</button>
+        <button type="submit" class="btn btn-primary mt-3">투표하기</button>
     </form>
-    <div>
+    <div class="mt-4">
         {% if question.id > 1 %}
-            <a href="{% url 'questions:question_detail' question.id|add:-1 %}">Previous</a>
+            <a href="{% url 'questions:question_detail' question.id|add:-1 %}" class="btn btn-secondary me-2">이전</a>
         {% endif %}
         {% if question.id < question_count %}
-            <a href="{% url 'questions:question_detail' question.id|add:1 %}">Next</a>
+            <a href="{% url 'questions:question_detail' question.id|add:1 %}" class="btn btn-secondary">다음</a>
         {% endif %}
     </div>
+</div>
 {% endblock %}

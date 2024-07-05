@@ -8,15 +8,13 @@
 {% block content %}
 <div class="container">
     <h1>Chatbot</h1>
-    <div id="chat-log" class="chat-log"></div>
     <div class="chat-window">
-
+        <div id="chat-log" class="chat-log"></div>
         <div class="chat-input">
             <input type="text" id="question" class="form-control" placeholder="질문을 입력해주세요">
             <button onclick="getChatbotResponse()" class="btn btn-primary">Send</button>
         </div>
     </div>
-
 </div>
 {% endblock %}
 

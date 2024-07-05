@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404
+from django.contrib.auth.decorators import login_required
 from . import models
 from django.views import generic
 from django.http import JsonResponse
@@ -11,6 +12,7 @@ def main_home(request):
 def destinations(request):
     return render(request, 'mainApp/destinations.html')
 
+@login_required(login_url='common:login')
 def chatbot_view(request):
     if request.method == 'POST':
         question = request.POST.get('question')
