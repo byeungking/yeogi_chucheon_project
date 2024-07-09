@@ -3,11 +3,18 @@
 
 <!-- 추가 css -->
 {% block extra_css %}
-
+<link rel="stylesheet" type="text/css" href="{% static 'mainApp/css/banner.css' %}">
 {% endblock %}
 
 <!-- 내용 -->
 {% block content %}
+    <div class="banner-container">
+        {% for banner in banners %}
+            <div class="banner {% if forloop.first %}visible{% endif %}">
+                <img src="{{ banner.image.url }}" alt="{{ banner.title }}">
+            </div>
+        {% endfor %}
+    </div>
     <header class="header">
         <div class="header-content">
             <h1>환영합니다. 이번 목적지는</h1>
@@ -16,19 +23,18 @@
             <p>
                 <a href="{% url 'questions:question_detail' question_id=1 %}">여행 추천 받기</a>
             </p>
-
         </div>
     </header>
     <div class="content" id="content">
         <h2>Popular Destinations</h2>
         <div class="cards">
-            <a href="{% url 'mainApp:destinations'%}">
-            <div class="card">
-                <img src="{% static 'mainApp/images/destination1.jpg' %}" alt="Destination 1">
-                <h3>Destination 1</h3>
-                <p>Explore the beauty of Destination 1 with its stunning landscapes and rich culture.</p>
-            </div>
-                </a>
+            <a href="{% url 'mainApp:destinations' %}">
+                <div class="card">
+                    <img src="{% static 'mainApp/images/destination1.jpg' %}" alt="Destination 1">
+                    <h3>Destination 1</h3>
+                    <p>Explore the beauty of Destination 1 with its stunning landscapes and rich culture.</p>
+                </div>
+            </a>
             <div class="card">
                 <img src="https://via.placeholder.com/300x200" alt="Destination 2">
                 <h3>Destination 2</h3>
@@ -41,9 +47,23 @@
             </div>
         </div>
     </div>
-
 {% endblock %}
 
 <!-- 스크립트 -->
 {% block script %}
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        let currentIndex = 0;
+        const banners = document.querySelectorAll('.banner');
+        const totalBanners = banners.length;
+
+        function showNextBanner() {
+            banners[currentIndex].classList.remove('visible');
+            currentIndex = (currentIndex + 1) % totalBanners;
+            banners[currentIndex].classList.add('visible');
+        }
+
+        setInterval(showNextBanner, 5000); // Change image every 5 seconds
+    });
+</script>
 {% endblock %}

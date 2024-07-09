@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<h1>Air Pollution Data</h1>
+    <ul>
+        {% for item in items %}
+        <div><img src="{{ item.firstimage }}"></div>
+        <li>{{ item.title }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
+

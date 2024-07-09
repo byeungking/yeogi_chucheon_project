@@ -1,8 +1,12 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
 from django.http import HttpResponseRedirect
-from .models import Question, Choice
 
+# 모델
+from .models import Question, Choice
+from .api_control import tourist_printout
+# 외부 라이브러리
+import requests
 
 def question_detail(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
@@ -52,3 +56,13 @@ def result(request):
         selected_choices_list.append((question, choice))
 
     return render(request, 'questions/result.html', {'selected_choices': selected_choices_list})
+
+def get_air_pollution_data(request):
+    items = tourist_printout()
+    try:
+
+        return render(request, 'questions/area.html', {'items': items})
+
+    except requests.exceptions.RequestException as e:
+
+        return render(request, 'questions/area.html', {'message': str(e)})

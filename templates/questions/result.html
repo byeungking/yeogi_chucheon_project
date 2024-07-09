@@ -8,5 +8,5 @@
             <li>{{ question.question_text }}: {{ choice.choice_text }}</li>
         {% endfor %}
     </ul>
-    <p><a href="{% url 'questions:question_detail' question_id=1 %}">Take the quiz again</a></p>
+    <p><a href="{% url 'questions:area'%}">추천 결과 보기</a></p>
 {% endblock %}

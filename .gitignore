@@ -5,3 +5,5 @@ __pycache__
 command.txt
 Configuration.txt
 mainApp/.env
+questions/.env
+dump/
