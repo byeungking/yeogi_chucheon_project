@@ -1,73 +1,65 @@
-/* styles.css */
 
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-    margin: 20px;
+.container {
     padding: 20px;
-}
-
-.logo {
-    width: 200px;
-    height: 200px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    background-color: #f8f9fa;
+    margin-bottom: 20px;
+    margin-top: 40px; /* 상단 여유 추가 */
 }
 
 h1 {
-    color: #333;
     text-align: center;
-}
-
-form {
-    background-color: #fff;
-    border: 1px solid #ccc;
     padding: 20px;
-    margin-top: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    background-color: #e9ecef;
 }
 
-ul {
-    list-style-type: none;
+.choice-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.choice-container input[type="radio"] {
+    display: none;
+}
+
+.choice-container label {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 5px;
+    background-color: #f8f9fa;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.choice-container input[type="radio"]:checked + label {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px; /* 버튼 사이 간격 설정 */
+    margin-top: 20px;
+}
+
+.custom-list {
+    list-style-type: none; /* 기본 불릿 제거 */
     padding: 0;
 }
 
-li {
-    margin-bottom: 10px;
-}
-
-label {
-    margin-left: 5px;
-}
-
-button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #45a049;
-}
-
-div.navigation {
-    margin-top: 20px;
-    text-align: center;
-}
-
-div.navigation a {
-    text-decoration: none;
-    padding: 10px 20px;
-    margin: 0 10px;
-    background-color: #007bff;
-    color: #fff;
+.custom-list li {
+    padding: 10px;
+    margin: 5px 0;
+    background-color: #e9ecef;
+    border: 1px solid #ced4da;
     border-radius: 5px;
-}
-
-div.navigation a:hover {
-    background-color: #0056b3;
-}
-
-.no-choices {
-    color: #999;
 }

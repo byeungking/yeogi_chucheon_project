@@ -8,6 +8,7 @@
 
 <!-- 내용 -->
 {% block content %}
+
     <div class="banner-container">
         {% for banner in banners %}
             <div class="banner {% if forloop.first %}visible{% endif %}">
@@ -15,8 +16,8 @@
             </div>
         {% endfor %}
     </div>
-    <header class="header">
-        <div class="header-content">
+<header class="header">
+<div class="header-content">
             <h1>환영합니다. 이번 목적지는</h1>
             <h1>"여기추천"</h1>
             <p>나에게 맞는 여행지를 찾아보세요.</p>

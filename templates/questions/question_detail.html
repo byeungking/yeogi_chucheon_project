@@ -1,29 +1,30 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block extra_css %}
+<link rel="stylesheet" type="text/css" href="{% static 'questions/css/styles.css' %}">
+{% endblock %}
+
 {% block content %}
 <div class="container">
     <h1 class="mt-5">{{ question.question_text }}</h1>
     <form action="{% url 'questions:vote' question.id %}" method="post" class="mt-4">
         {% csrf_token %}
-        <ul class="list-group">
+        <div class="choice-container">
             {% for choice in question.choice_set.all %}
-                <li class="list-group-item">
-                    <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}" class="form-check-input">
-                    <label for="choice{{ forloop.counter }}" class="form-check-label">{{ choice.choice_text }}</label>
-                </li>
+                <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}" class="form-check-input">
+                <label for="choice{{ forloop.counter }}" class="form-check-label">{{ choice.choice_text }}</label>
             {% empty %}
-                <li class="list-group-item">이 질문에 대한 선택사항이 없습니다.</li>
+                <div class="list-group-item">이 질문에 대한 선택사항이 없습니다.</div>
             {% endfor %}
-        </ul>
-        <button type="submit" class="btn btn-primary mt-3">투표하기</button>
+        </div>
+        <div class="button-container">
+            <button type="submit" class="btn btn-primary">투표하기</button>
+        </div>
     </form>
-    <div class="mt-4">
+    <div class="button-container">
         {% if question.id > 1 %}
-            <a href="{% url 'questions:question_detail' question.id|add:-1 %}" class="btn btn-secondary me-2">이전</a>
-        {% endif %}
-        {% if question.id < question_count %}
-            <a href="{% url 'questions:question_detail' question.id|add:1 %}" class="btn btn-secondary">다음</a>
+            <a href="{% url 'questions:question_detail' question.id|add:-1 %}" class="btn btn-secondary">이전</a>
         {% endif %}
     </div>
 </div>
