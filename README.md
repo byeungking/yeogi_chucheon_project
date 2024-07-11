@@ -13,7 +13,6 @@ venv\Scripts\activate
 ### 3. 마이그레이션 진행 (Migration)
 python manage.py makemigrations <br>
 python manage.py migrate
-
 ### 4. 서버 시작 (Start Server)
 python manage.py runserver
 
@@ -34,3 +33,6 @@ python manage.py runserver
 4. 2024-07-10: 여행 주제에 맞는 히든 메시지 추가  
 사용자 경험을 향상시키기 위해 여행 주제와 관련된 히든 메시지가 추가되었습니다.  
 홈페이지의 비주얼이 업데이트되었습니다.  
+
+5. 2024-07-11: api 토큰이 없어도 실행 가능  
+.env 파일이 없어도 프로젝트가 실행 가능 하도록 변경되었습니다.
