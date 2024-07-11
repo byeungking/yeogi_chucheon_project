@@ -1,9 +1,24 @@
 # yeogi_chucheon_project
 
-## 프로젝트 설명
+
+## 프로젝트 설명 (Project Information)
 ### 이 프로젝트는 여행 추천 사이트입니다. <br>사용자는 "추천 받기" 버튼을 누르고 간단한 질문에 답을 하면, 질문에 맞춰 여행지를 추천받을 수 있습니다. <br>또한 추천된 여행지 주변의 숙박시설이나 레스토랑 등도 추천받을 수 있습니다.
 
-## 개발 진행 상황
+
+## 실행 방법 (How to Execute)
+### 1. 라이브러리 설치 (Installing the Library)
+pip install -r requirements.txt
+### 2. 가상환경 활성화 후 (Enabling a Virtual Environment)
+venv\Scripts\activate
+### 3. 마이그레이션 진행 (Migration)
+python manage.py makemigrations <br>
+python manage.py migrate
+
+### 4. 서버 시작 (Start Server)
+python manage.py runserver
+
+
+## 개발 진행 상황 (Development progress)
 
 1. 2024-07-04: 첫 번째 커밋  
 초기 단계로, 메인 페이지, 회원가입, 로그인 기능이 구현되었습니다.  
