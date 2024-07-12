@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.views import generic
 from django.http import JsonResponse
-from .gpt import chatbot_response
+from .api_openai_GPT import chatbot_response
 
 from .models import Banner
 

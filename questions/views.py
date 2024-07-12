@@ -4,7 +4,9 @@ from django.http import HttpResponseRedirect
 
 # 모델
 from .models import Question, Choice
-from .api_control import tourist_printout
+from .api_tour import tourist_printout
+from .api_openai_dalle import create_img
+
 # 외부 라이브러리
 import requests
 
@@ -57,12 +59,15 @@ def result(request):
 
     return render(request, 'questions/result.html', {'selected_choices': selected_choices_list})
 
-def get_air_pollution_data(request):
+def get_tourist_data(request):
+    prompt = "Random Place"
     items = tourist_printout()
+    ai_image = create_img(prompt)
+    context = {'items': items, 'ai_image':ai_image}
     try:
 
-        return render(request, 'questions/area.html', {'items': items})
+        return render(request, 'questions/recommendation.html', context)
 
     except requests.exceptions.RequestException as e:
 
-        return render(request, 'questions/area.html', {'message': str(e)})
+        return render(request, 'questions/recommendation.html', {'message': str(e)})

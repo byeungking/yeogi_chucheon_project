@@ -36,3 +36,5 @@ python manage.py runserver
 
 5. 2024-07-11: api 토큰이 없어도 실행 가능  
 .env 파일이 없어도 프로젝트가 실행 가능 하도록 변경되었습니다.
+
+## Author github : https://github.com/byeungking
