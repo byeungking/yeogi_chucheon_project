@@ -1,0 +1,58 @@
+@charset "UTF-8";
+.chat-window {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 70vh;
+}
+
+.chat-log {
+    width: 80%; /* 전체 너비의 100% */
+    height: 800px;
+    border: 1px solid #ccc; /* 경계선 추가 (선택 사항) */
+    padding: 10px;
+    margin-bottom: 10px; /* chat-input과의 간격 조절 */
+    overflow-y: auto; /* 세로 스크롤바 추가 */
+    background-color: #f9f9f9; /* 배경색 설정 (선택 사항) */
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-message {
+    max-width: 70%; /* 메시지 너비 설정 */
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 10px;
+    word-wrap: break-word; /* 단어가 너무 길 경우 줄 바꿈 */
+    align-self: flex-start; /* 기본 정렬 왼쪽 */
+    display: inline-block;
+}
+
+.chat-message.user {
+    background-color: #ffd966;
+    align-self: flex-end;
+    text-align: right;
+}
+
+.chat-message.bot {
+    background-color: #a1ffcd;
+    align-self: flex-start;
+    text-align: left;
+}
+
+.chat-input {
+    width: 80%; /* 전체 너비의 80% */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chat-input input {
+    width: 80%; /* 전체 너비의 70% */
+    margin-right: 10px;
+}
+
+.chat-input button {
+    width: 20%; /* 전체 너비의 20% */
+}

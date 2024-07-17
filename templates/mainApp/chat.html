@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'mainApp/css/chat.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Chatbot</h1>
+    <div class="chat-window">
+        <div id="chat-log" class="chat-log"></div>
+        <div class="chat-input">
+            <input type="text" id="question" class="form-control" placeholder="질문을 입력해주세요">
+            <button onclick="getChatbotResponse()" class="btn btn-primary">Send</button>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block script %}
+<script type='text/javascript'>
+    async function getChatbotResponse() {
+        const question = document.getElementById('question').value;
+        const response = await fetch('', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'X-CSRFToken': '{{ csrf_token }}'
+            },
+            body: new URLSearchParams({
+                'question': question
+            })
+        });
+        const data = await response.json();
+        addMessageToChatLog('user', question);
+        addMessageToChatLog('bot', data.response);
+        document.getElementById('question').value = '';
+    }
+
+    function addMessageToChatLog(sender, message) {
+        const chatLog = document.getElementById('chat-log');
+        const messageElement = document.createElement('div');
+        messageElement.className = `chat-message ${sender}`;
+        messageElement.innerText = message;
+        chatLog.appendChild(messageElement);
+        chatLog.scrollTop = chatLog.scrollHeight;
+    }
+</script>
+{% endblock %}

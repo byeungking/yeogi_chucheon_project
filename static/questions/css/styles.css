@@ -1,0 +1,65 @@
+
+.container {
+    padding: 20px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    background-color: #f8f9fa;
+    margin-bottom: 20px;
+    margin-top: 40px; /* 상단 여유 추가 */
+}
+
+h1 {
+    text-align: center;
+    padding: 20px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    background-color: #e9ecef;
+}
+
+.choice-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.choice-container input[type="radio"] {
+    display: none;
+}
+
+.choice-container label {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 5px;
+    background-color: #f8f9fa;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.choice-container input[type="radio"]:checked + label {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px; /* 버튼 사이 간격 설정 */
+    margin-top: 20px;
+}
+
+.custom-list {
+    list-style-type: none; /* 기본 불릿 제거 */
+    padding: 0;
+}
+
+.custom-list li {
+    padding: 10px;
+    margin: 5px 0;
+    background-color: #e9ecef;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+}

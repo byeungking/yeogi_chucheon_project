@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" type="text/css" href="{% static 'questions/css/styles.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1>결과</h1>
+        <ul class="custom-list">
+            {% for question, choice in selected_choices %}
+                <li>{{ question.question_text }}: {{ choice.choice_text }}</li>
+            {% endfor %}
+        </ul>
+        <div class="button-container">
+            <a href="{% url 'questions:recommendation'%}" class="btn btn-secondary">추천 결과 보기</a>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+     <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    <!-- 추가 CSS -->
+    {% block extra_css %}
+    {% endblock %}
+    <title>여기추천 -MBTI 여행추천-</title>
+    <link rel="icon" href="{% static 'mainApp/images/favicon.png' %}" type="image/x-icon">
+</head>
+
+<body class="{% block body_class %}{% endblock %}">
+
+<!-- 네비게이션바 -->
+{% include "navbar.html" %}
+
+<!-- 기본 템플릿 안에 삽입될 내용 Start -->
+{% block content %}
+{% endblock %}
+<!-- 기본 템플릿 안에 삽입될 내용 End -->
+<footer class="footer">
+        <div class="logo">
+            <img src="{% static 'mainApp/images/logo.png' %}" alt="Travel Site Logo">
+        </div>
+        <p>&copy; 2024 Travel Site. All rights reserved.</p>
+</footer>
+<!-- Bootstrap JS -->
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+<!-- 자바스크립트 Start -->
+{% block script %}
+{% endblock %}
+<!-- 자바스크립트 End -->
+</body>
+</html>

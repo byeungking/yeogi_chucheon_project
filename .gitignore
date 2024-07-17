@@ -1,0 +1,9 @@
+.idea
+db.sqlite3
+*.pyc
+__pycache__
+command.txt
+Configuration.txt
+mainApp/.env
+questions/.env
+dump/
