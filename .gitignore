@@ -7,3 +7,4 @@ Configuration.txt
 mainApp/.env
 questions/.env
 dump/
+venv/

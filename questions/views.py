@@ -5,7 +5,7 @@ from django.http import HttpResponseRedirect
 # 모델
 from .models import Question, Choice
 from .api_tour import tourist_printout
-#from .api_openai_dalle import create_img
+from .api_openai_dalle import create_img
 
 # 외부 라이브러리
 import requests
@@ -86,8 +86,10 @@ def get_air_pollution_data(request):
 
 
 def get_tourist_data(request):
+    prompt = "A fantasy ruins"
     items = tourist_printout()
-    context = {'items': items, }
+    ai_image = create_img(prompt)
+    context = {'items': items, 'ai_image': ai_image}
     try:
 
         return render(request, 'questions/recommendation.html', context)
