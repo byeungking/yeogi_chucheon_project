@@ -6,6 +6,7 @@
 
 
 ## 실행 방법 (How to Execute)
+### 0. 이프로젝트는 파이참, 아나콘다 인터프리터를 사용하였습니다.
 ### 1. 가상환경 설치 (Installing a Virtual Environment)
 python -m venv venv 
 <br><br>※이미 venv 폴더가 있을 경우 삭제하고 다시 설치해 주세요.※
