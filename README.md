@@ -6,14 +6,17 @@
 
 
 ## 실행 방법 (How to Execute)
-### 1. 라이브러리 설치 (Installing the Library)
-pip install -r requirements.txt
+### 1. 가상환경 설치 (Installing a Virtual Environment)
+python -m venv venv 
+<br><br>※이미 venv 폴더가 있을 경우 삭제하고 다시 설치해 주세요.※
 ### 2. 가상환경 활성화 후 (Enabling a Virtual Environment)
 venv\Scripts\activate
-### 3. 마이그레이션 진행 (Migration)
+### 3. 라이브러리 설치 (Installing the Library)
+pip install -r requirements.txt
+### 4. 마이그레이션 진행 (Migration)
 python manage.py makemigrations <br>
 python manage.py migrate
-### 4. 서버 시작 (Start Server)
+### 5. 서버 시작 (Start Server)
 python manage.py runserver
 
 
@@ -37,4 +40,6 @@ python manage.py runserver
 5. 2024-07-11: api 토큰이 없어도 실행 가능  
 .env 파일이 없어도 프로젝트가 실행 가능 하도록 변경되었습니다.
 
+6. 2024-07-18: 결과페이지에 이미지생성 api추가, 추천 알고리즘 작성중  
+결과 페이지에 이미지 생성이 추가되고 추천알고리즘 구현중에 있습니다. 
 ## Author github : https://github.com/byeungking

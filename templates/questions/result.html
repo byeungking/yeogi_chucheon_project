@@ -6,15 +6,22 @@
 {% endblock %}
 
 {% block content %}
-    <div class="container">
-        <h1>결과</h1>
-        <ul class="custom-list">
-            {% for question, choice in selected_choices %}
-                <li>{{ question.question_text }}: {{ choice.choice_text }}</li>
-            {% endfor %}
-        </ul>
-        <div class="button-container">
-            <a href="{% url 'questions:recommendation'%}" class="btn btn-secondary">추천 결과 보기</a>
-        </div>
+<div class="container">
+    <h1>결과</h1>
+    <ul class="custom-list">
+        {% for question, choice in selected_choices %}
+            <li>{{ question.question_text }}: {{ choice.choice_text }}</li>
+        {% endfor %}
+    </ul>
+
+    {% if recommended_destination %}
+        <h2>추천 여행지: {{ recommended_destination }}</h2>
+    {% else %}
+        <p>추천 결과를 가져오는 데 문제가 발생했습니다.</p>
+    {% endif %}
+
+    <div class="button-container">
+        <a href="{% url 'questions:recommendation' %}" class="btn btn-secondary">추천 결과 보기</a>
     </div>
+</div>
 {% endblock %}

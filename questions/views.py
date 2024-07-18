@@ -4,6 +4,7 @@ from django.shortcuts import render, redirect
 from .models import Question, Choice
 from .api_tour import tourist_printout
 from .api_openai_dalle import create_img
+from .deep_learning_module import predict_destination
 # 외부 라이브러리
 import requests
 
@@ -92,13 +93,37 @@ def get_tourist_data(request):
         return render(request, 'questions/recommendation.html', {'message': str(e)})
 
 
+def result_view(request):
+    selected_choices = request.session.get('selected_choices', {})
+    selected_choices_list = []
+
+    if not selected_choices:
+        return render(request, 'questions/result.html', {'error_message': "No choices have been made."})
+
+    for question_id, choice_id in selected_choices.items():
+        try:
+            question = Question.objects.get(pk=question_id)
+            choice = question.choice_set.get(pk=choice_id)
+            selected_choices_list.append((question, choice))
+        except (Question.DoesNotExist, Choice.DoesNotExist):
+            continue
+
+    if not selected_choices_list:
+        return render(request, 'questions/error.html', {'error_message': "No valid choices found."})
+
+    # 여행지 예측을 위한 데이터 준비
+    question_texts = [q.question_text for q, _ in selected_choices_list]
+    choice_ids = [c.id for _, c in selected_choices_list]
+
+    # 딥러닝 모델을 사용하여 여행지 추천
+    recommended_destination = predict_destination(question_texts, choice_ids)
+
+    context = {
+        'selected_choices': selected_choices_list,
+        'recommended_destination': recommended_destination
+    }
+    return render(request, 'questions/result.html', context)
 
 
 
-def my_view(request):
-    # 함수 호출하여 딕셔너리 가져오기
-    question_choices_dict = get_question_choices_dict()
-
-    # 템플릿에 딕셔너리 전달
-    return render(request, 'my_template.html', {'question_choices_dict': question_choices_dict})
 
