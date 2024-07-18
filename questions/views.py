@@ -77,13 +77,6 @@ def result(request):
 
     return render(request, 'questions/result.html', {'selected_choices': selected_choices_list})
 
-def get_air_pollution_data(request):
-    try:
-        items = tourist_printout()
-        return render(request, 'questions/area.html', {'items': items})
-    except requests.exceptions.RequestException as e:
-        return render(request, 'questions/area.html', {'message': str(e)})
-
 
 def get_tourist_data(request):
     prompt = "A fantasy ruins"
