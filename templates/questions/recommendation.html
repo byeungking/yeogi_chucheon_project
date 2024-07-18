@@ -1,9 +1,15 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block extra_css %}
+<link rel="stylesheet" type="text/css" href="{% static 'questions/css/styles.css' %}">
+{% endblock %}
+
 {% block content %}
-<h1>Air Pollution Data</h1>
-    <h3>당신을 위한 그림</h3>
+<div class="container">
+<h1>당신의 여행 성향은?</h1>
+<h2>{result}</h2>
+    <h3>이상적인 여행지</h3>
     <div>
         <img src="{{ ai_image }}">
     </div>
@@ -15,5 +21,6 @@
         <li>{{ item.title }}</li>
         {% endfor %}
     </ul>
+</div>
 {% endblock %}
 

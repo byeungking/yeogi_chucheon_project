@@ -1,12 +1,9 @@
-from django.shortcuts import render, get_object_or_404, redirect
-from django.urls import reverse
-from django.http import HttpResponseRedirect
+from django.shortcuts import render, redirect
 
 # 모델
 from .models import Question, Choice
 from .api_tour import tourist_printout
 from .api_openai_dalle import create_img
-
 # 외부 라이브러리
 import requests
 
@@ -44,12 +41,15 @@ def vote(request, question_id):
 
         # Find the next valid question ID
         next_question_id = question_id + 1
+        question_count = 1
         total_questions = Question.objects.count()
 
-        while next_question_id <= total_questions:
+        while question_count <= total_questions:
             if Question.objects.filter(pk=next_question_id).exists():
+
                 return redirect('questions:question_detail', question_id=next_question_id)
             next_question_id += 1
+            question_count += 1
 
         # If all questions are answered, go to result page
         return redirect('questions:result')
@@ -90,4 +90,15 @@ def get_tourist_data(request):
     except requests.exceptions.RequestException as e:
 
         return render(request, 'questions/recommendation.html', {'message': str(e)})
+
+
+
+
+
+def my_view(request):
+    # 함수 호출하여 딕셔너리 가져오기
+    question_choices_dict = get_question_choices_dict()
+
+    # 템플릿에 딕셔너리 전달
+    return render(request, 'my_template.html', {'question_choices_dict': question_choices_dict})
 
